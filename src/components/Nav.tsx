@@ -56,10 +56,11 @@ const Nav: React.FC = () => {
             Sign in
           </a>
           <a
-            href="/contact-sales"
+            href="https://form.typeform.com/to/GxmVIilb"
+            target="_blank"
             className="bg-mitosite-beige-dark text-mitosite-beige hover:bg-opacity-90 px-8 py-6 font-medium transition-colors text-nowrap"
           >
-            Join now
+            Contact sales
           </a>
         </div>
       </div>
