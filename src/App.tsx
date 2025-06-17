@@ -3,7 +3,7 @@ import './App.css';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Nav from './components/Nav';
 import Splash from './components/Splash';
-import { OverviewProductSection, OverviewAnalyticsSection, OverviewCompetitorsSection } from './components/Overview';
+import Overview from './components/Overview';
 import GenerateAndMigrate from './components/GenerateAndMigrate';
 import CaseStudies from './components/CaseStudies';
 import Pricing from './components/Pricing';
@@ -11,10 +11,18 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import Companies from './components/Companies';
 
+// Add type definition for Google Analytics
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 function App() {
   const containerRef = useRef(null);
   const [overviewStep, setOverviewStep] = useState(0);
   const [isOverviewActive, setIsOverviewActive] = useState(false);
+  const [currentSection, setCurrentSection] = useState('splash');
 
   const { scrollYProgress } = useScroll({
     container: containerRef
@@ -25,7 +33,6 @@ function App() {
     damping: 30,
     restDelta: 0.001
   });
-
 
   // Enable/disable container scrolling based on overview state
   useEffect(() => {
@@ -41,12 +48,20 @@ function App() {
     }
   }, [isOverviewActive]);
 
-  // Regular sections (excluding overview sections)
+  // Track section changes with Google Analytics
+  useEffect(() => {
+    // Track page view
+    if (window.gtag) {
+      window.gtag('event', 'section_view', {
+        'section_id': currentSection
+      });
+    }
+  }, [currentSection]);
+
+  // Regular sections
   const regularSections = [
     { id: 'splash', Component: Splash },
-    { id: 'overview1', Component: OverviewProductSection },
-    { id: 'overview2', Component: OverviewAnalyticsSection },
-    { id: 'overview3', Component: OverviewCompetitorsSection },
+    { id: 'overview', Component: Overview },
     { id: 'generate-migrate', Component: GenerateAndMigrate },
     // { id: 'case-studies', Component: CaseStudies },
     { id: 'pricing', Component: Pricing },
@@ -54,6 +69,51 @@ function App() {
     { id: 'footer', Component: Footer }
   ];
 
+  // Setup intersection observers to track current section
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    const observerOptions = {
+      root: containerRef.current,
+      threshold: 0.6
+    };
+
+    // Create observers for each section
+    regularSections.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (!element) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setCurrentSection(id);
+            // Set overview as active when in view
+            if (id === 'overview') {
+              setIsOverviewActive(true);
+            } else {
+              setIsOverviewActive(false);
+            }
+          }
+        });
+      }, observerOptions);
+
+      observer.observe(element);
+      observers.push(observer);
+    });
+
+    // Cleanup
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
+  }, []);
+
+  // Track button clicks
+  const trackButtonClick = (buttonName: string) => {
+    if (window.gtag) {
+      window.gtag('event', 'button_click', {
+        'button_name': buttonName
+      });
+    }
+  };
 
   return (
     <div className="App relative bg-mitosite-beige">
@@ -67,7 +127,6 @@ function App() {
         ref={containerRef}
         className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth snap-container mt-[113px]"
       >
-        
         {/* Remaining regular sections */}
         {regularSections.map(({ id, Component }) => (
           <div 
@@ -90,6 +149,7 @@ function App() {
         onClick={() => {
           const nextSection = document.getElementById('overview');
           nextSection?.scrollIntoView({ behavior: 'smooth' });
+          trackButtonClick('scroll_indicator');
         }}
       >
         <svg 

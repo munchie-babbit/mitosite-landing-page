@@ -16,22 +16,10 @@ const Nav: React.FC = () => {
 
           <div className="hidden md:flex ml-10 space-x-8">
             <a
-              href="#product"
-              className="text-mitosite-beige-dark hover:opacity-80 transition-opacity font-medium"
-            >
-              Product
-            </a>
-            <a
-              href="#solutions"
-              className="text-mitosite-beige-dark hover:opacity-80 transition-opacity font-medium"
-            >
-              Solutions
-            </a>
-            <a
               href="#developers"
               className="text-mitosite-beige-dark hover:opacity-80 transition-opacity font-medium"
             >
-              Developers
+              Features
             </a>
             <a
               href="#faq"
@@ -65,7 +53,7 @@ const Nav: React.FC = () => {
         </div>
       </div>
       <div className="px-2 h-10">
-        <motion.img src={navIcons} alt="Mitosite" initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 2}}/>
+        <motion.img src={navIcons} alt="Mitosite" initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 2}} className="w-full h-full object-contain"/>
       </div>
     </nav>
   );
