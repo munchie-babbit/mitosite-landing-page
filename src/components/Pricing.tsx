@@ -2,11 +2,12 @@ import React from 'react';
 
 const PricingTier: React.FC<{
   name: string;
+  subtitle: string;
   price: string;
-  description: string;
+  description?: string;
   features: string[];
   popular?: boolean;
-}> = ({ name, price, description, features, popular = false }) => {
+}> = ({ name, subtitle, price, description, features, popular = false }) => {
   return (
     <div className={`bg-white p-6 rounded-lg shadow-md border ${popular ? 'border-mitosite-green' : 'border-gray-200'} relative`}>
       {popular && (
@@ -16,11 +17,12 @@ const PricingTier: React.FC<{
       )}
       
       <h3 className="text-2xl font-bold text-mitosite-black mb-2">{name}</h3>
+      <p className="text-mitosite-black mb-2">{subtitle}</p>
       <div className="mb-4">
         <span className="text-3xl font-bold text-mitosite-green">{price}</span>
         {price !== 'Custom' && <span className="text-gray-500">/month</span>}
       </div>
-      <p className="text-mitosite-black mb-6">{description}</p>
+      {description && <p className="text-mitosite-black mb-6">{description}</p>}
       
       <ul className="space-y-3 mb-8">
         {features.map((feature, index) => (
@@ -45,23 +47,22 @@ const PricingTier: React.FC<{
 const Pricing: React.FC = () => {
   const pricingTiers = [
     {
-      name: 'Starter',
-      price: '$49',
-      description: 'Perfect for early-stage startups and solo founders.',
+      name: 'Basic',
+      subtitle: 'AI code & asset generation',
+      price: '$19',
       features: [
         'Single landing page',
         'Basic AI design generation',
         'Monthly content updates',
-        'Custom domain',
         'Mobile responsive',
         'Email support'
       ],
       popular: false
     },
     {
-      name: 'Growth',
+      name: 'Pro',
+      subtitle: 'AI code & asset generation + human design',
       price: '$99',
-      description: 'For startups ready to scale their online presence.',
       features: [
         'Up to 5 landing pages',
         'Advanced AI design generation',
@@ -75,9 +76,10 @@ const Pricing: React.FC = () => {
     },
     {
       name: 'Enterprise',
-      price: 'Custom',
-      description: 'For established startups with complex needs.',
+      subtitle: 'Custom solutions by AI + human designers',
+      price: '$499',
       features: [
+        'Dedicated human design partner',
         'Unlimited landing pages',
         'Premium AI design generation',
         'Daily content updates',
@@ -95,12 +97,8 @@ const Pricing: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-mitosite-green mb-4">
-            Simple, Transparent Pricing
+            Pricing
           </h2>
-          <p className="text-mitosite-black max-w-2xl mx-auto">
-            Choose the plan that works best for your startup's needs. 
-            All plans include a 14-day free trial, no credit card required.
-          </p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -109,23 +107,11 @@ const Pricing: React.FC = () => {
               key={index}
               name={tier.name}
               price={tier.price}
-              description={tier.description}
+              subtitle={tier.subtitle}
               features={tier.features}
               popular={tier.popular}
             />
           ))}
-        </div>
-        
-        <div className="mt-16 text-center">
-          <p className="text-mitosite-black mb-4">
-            Need a custom solution? Contact our sales team.
-          </p>
-          <a 
-            href="#" 
-            className="inline-block border border-mitosite-green text-mitosite-green hover:bg-mitosite-green hover:text-white font-medium px-6 py-3 rounded-full transition-colors"
-          >
-            Contact Sales
-          </a>
         </div>
       </div>
     </section>

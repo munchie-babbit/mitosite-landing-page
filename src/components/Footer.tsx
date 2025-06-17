@@ -86,14 +86,14 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-mitosite-black text-white">
+    <footer className="bg-mitosite-beige-dark text-mitosite-beige">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <div className="col-span-2">
-            <a href="/" className="text-3xl font-bold font-cardo text-white mb-6 inline-block">
+            <a href="/" className="text-3xl font-bold font-cardo text-mitosite-beige mb-6 inline-block">
               mitosite
             </a>
-            <p className="text-gray-300 mb-6 max-w-xs">
+            <p className="text-mitosite-beige-mid mb-6 max-w-xs">
               Evolving landing pages for ever-changing startups. The only platform that grows with your business.
             </p>
             <div className="flex space-x-4">
@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-mitosite-beige-mid hover:text-mitosite-beige transition-colors"
                 >
                   <span className="sr-only">{item.name}</span>
                   {item.icon}
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
                   <li key={link.name}>
                     <a 
                       href={link.href} 
-                      className="text-gray-300 hover:text-white transition-colors"
+                      className="text-mitosite-beige-mid hover:text-white transition-colors"
                     >
                       {link.name}
                     </a>
@@ -129,12 +129,12 @@ const Footer: React.FC = () => {
           ))}
         </div>
         
-        <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400">
+        <div className="border-t border-mitosite-beige mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-mitosite-beige-mid">
             &copy; {currentYear} Mitosite, Inc. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0">
-            <select className="bg-mitosite-black text-gray-300 border border-gray-700 rounded-md px-2 py-1">
+            <select className="bg-mitosite-beige-dark text-mitosite-beige-mid border border-mitosite-beige-dark rounded-md px-2 py-1">
               <option value="en">English</option>
               <option value="es">Español</option>
               <option value="fr">Français</option>

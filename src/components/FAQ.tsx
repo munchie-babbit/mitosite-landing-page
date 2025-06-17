@@ -68,7 +68,7 @@ const FAQ: React.FC = () => {
           Frequently Asked Questions
         </h2>
         <p className="text-center mb-12 max-w-2xl mx-auto">
-          Everything you need to know about Mitosite and how it can help your startup grow.
+          Everything you need to know about Mitosite and how it can help your startup grow. For more information, please contact us at <a href="mailto:hello@mitosite.com" className="text-mitosite-green hover:text-mitosite-green-dark">hello@mitosite.com</a>.
         </p>
         
         <div className="max-w-3xl mx-auto">

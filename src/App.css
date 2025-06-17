@@ -2,4 +2,32 @@
   /* No text-align center to allow components to control their own text alignment */
 }
 
+/* Ensure smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* For browsers that support it, use better scroll behavior */
+@supports (scroll-snap-type: y mandatory) {
+  .snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* For iOS inertia scrolling */
+  }
+  
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
+/* Prevent horizontal scrolling */
+body, html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 /* Remove animation styles as we don't need them */
