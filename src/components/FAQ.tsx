@@ -96,7 +96,6 @@ const FAQ: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="h-12 border-t-0 border border-mitosite-beige-dark container mx-auto px-6"></div>
     </section>
   );
 };

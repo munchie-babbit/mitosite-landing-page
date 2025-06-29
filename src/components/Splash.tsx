@@ -21,7 +21,7 @@ const Splash: React.FC = () => {
   const [showSecond, setShowSecond] = useState(false);
   const [showThird, setShowThird] = useState(false);
   const [showFourth, setShowFourth] = useState(false);
-  
+
   // Refs for the scrolling features
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollX, setScrollX] = useState(0);
@@ -54,9 +54,9 @@ const Splash: React.FC = () => {
   // Create infinite scrolling animation
   useAnimationFrame(() => {
     if (contentWidth <= 0) return;
-    
+
     // Update scroll position
-    setScrollX(prev => {
+    setScrollX((prev) => {
       // When we've scrolled the width of the original content, reset to start
       if (Math.abs(prev) >= contentWidth) {
         return 0;
@@ -67,13 +67,18 @@ const Splash: React.FC = () => {
 
   // Create duplicated content for seamless scrolling
   // We need to duplicate the content so when the first set scrolls out, the second set is visible
-  const duplicatedFeatures = [...keyFeatures, ...keyFeatures, ...keyFeatures, ...keyFeatures];
+  const duplicatedFeatures = [
+    ...keyFeatures,
+    ...keyFeatures,
+    ...keyFeatures,
+    ...keyFeatures,
+  ];
 
   return (
     <div className="grid grid-cols-2 relative  bg-mitosite-beige border-b border-mitosite-beige-dark">
-      <div className="container mx-auto pt-24 pb-12 md:pt-32 md:pb-24 col-span-1 ">
+      <div className="container m-auto col-span-1 ">
         <div className="max-w-4xl px-6">
-          <h1 className="font-cardo text-4xl md:text-6xl font-bold text-mitosite-beige-dark mb-6 leading-snug md:leading-snug">
+          <h1 className="font-cardo text-2xl md:text-6xl font-bold text-mitosite-beige-dark mb-6 leading-snug md:leading-snug">
             <span
               className={`block transition-all duration-700 ${
                 showFirst ? "animate-fade-in-up" : "opacity-0"
@@ -108,16 +113,13 @@ const Splash: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center">
-              <div className="w-full sm:w-64 relative">
-                <input
-                  type="email"
-                  placeholder="Enter your email address"
-                  className="placeholder:text-mitosite-beige-dark w-full px-4 py-3 bg-mitosite-beige-mid text-mitosite-beige-dark border border-mitosite-beige-dark focus:border-mitosite-beige-dark focus:outline-none"
-                />
-              </div>
-              <button className="px-6 py-3 bg-mitosite-beige-dark hover:bg-mitosite-beige-darkest text-mitosite-beige font-medium transition-colors border border-mitosite-beige-dark">
-                Start now →
-              </button>
+              <a
+                href="https://app.mitosite.ai"
+                target="_blank"
+                className="px-6 py-3 bg-gradient-to-r from-mitosite-purple/60 to-[#B9BFB1]/60 hover:bg-mitosite-beige-darkest text-mitosite-beige-dark font-medium transition-colors border border-mitosite-beige-dark"
+              >
+                 Try it now - it's free →
+              </a>
             </div>
           </div>
         </div>
@@ -126,15 +128,16 @@ const Splash: React.FC = () => {
       <div className="grid grid-cols-2 max-h-screen bg-mitosite-beige border-l border-mitosite-beige-dark">
         {/* Left Column */}
         <div className="flex flex-col p-4 flex items-end">
-          <motion.div 
-          initial={{height: 0, bottom: 0}}
-          animate={{height: "100%", bottom: 100}}
-          transition={{duration: 1}}
-          className="origin-bottom w-full h-full bg-gradient-to-b from-mitosite-beige via-[#B9BFB1]/50 to-mitosite-beige-mid rounded-2xl">
+          <motion.div
+            initial={{ height: 0, bottom: 0 }}
+            animate={{ height: "100%", bottom: 100 }}
+            transition={{ duration: 1 }}
+            className="origin-bottom w-full h-full bg-gradient-to-b from-mitosite-beige via-[#B9BFB1]/50 to-mitosite-beige-mid rounded-2xl"
+          >
             <motion.img
-              initial={{ scale: 0}}
-              animate={{ scale: 1}}
-              transition={{delay: 1, duration: 0.5}}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 1, duration: 0.5 }}
               src={flowers}
               alt="Flowers"
               className="w-full h-full object-contain opacity-100 z-50"
@@ -161,42 +164,86 @@ const Splash: React.FC = () => {
 
           {/* Navigation */}
           <div className="flex justify-between px-4 py-3 border-b border-mitosite-beige-dark">
-            <div className="text-sm font-medium text-mitosite-beige-dark">
+            <motion.div initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }} className="text-sm font-medium text-mitosite-beige-dark">
               MENU
-            </div>
-            <div className="text-sm font-medium text-mitosite-beige-dark">
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }} className="text-sm font-medium text-mitosite-beige-dark">
               LOGO
-            </div>
-            <div className="text-sm font-medium text-mitosite-beige-dark">
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }} className="text-sm font-medium text-mitosite-beige-dark">
               CTA
-            </div>
+            </motion.div>
           </div>
 
           {/* Value Prop Section */}
-          <motion.div 
-          initial={{width: 0}}
-          animate={{width: "100%"}}
-          transition={{ duration: 1.5}}
-          className="p-4 border-b border-mitosite-beige-dark">
-            <motion.div initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            transition={{delay: 0.6, duration: 0.5}} className="text-sm font-medium text-mitosite-beige-dark mb-2 text-nowrap">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 1.5 }}
+            className="p-4 border-b border-mitosite-beige-dark"
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="text-sm font-medium text-mitosite-beige-dark mb-2 text-nowrap flex flex-row justify-between"
+            >
+              <div className="">
               CLEAR VALUE PROP
+              </div>
+              <div>
+              ✳✳✳
+              </div>
             </motion.div>
-            <div className=" bg-gradient-to-b from-mitosite-beige to-[#B9BFB1]/60 rounded-lg h-56 mb-4"></div>
-            {/* <div className="bg-mitosite-beige-mid bg-opacity-30 rounded-lg h-20"></div> */}
+            <div className="bg-gradient-to-b from-mitosite-beige to-[#B9BFB1]/60 rounded-lg h-56 mb-4 relative overflow-hidden">
+              <div className="absolute inset-0 flex items-center p-4 justify-center flex-row">
+                <div className="grid grid-cols-2 gap-2 w-40 h-40 relative p-4">
+                  {/* Top Left Square */}
+                  <div className="bg-mitosite-beige w-full h-full transform origin-bottom-right animate-square-to-circle-1 border border-mitosite-beige-dark" />
+                  
+                  {/* Top Right Square */}
+                  <div className="bg-mitosite-beige w-full h-full transform origin-bottom-left animate-square-to-circle-2 border border-mitosite-beige-dark" />
+                  
+                  {/* Bottom Left Square */}
+                  <div className="bg-mitosite-beige w-full h-full transform origin-top-right animate-square-to-circle-3 border border-mitosite-beige-dark" />
+                  
+                  {/* Bottom Right Square */}
+                  <div className="bg-mitosite-beige w-full h-full transform origin-top-left animate-square-to-circle-4 border border-mitosite-beige-dark" />
+                </div>
+                <div className="grid grid-cols-2 gap-2 w-40 h-40 relative p-4">
+                  {/* Top Left Square */}
+                  <div className="bg-mitosite-beige w-full h-full transform origin-bottom-right animate-square-to-circle-1 border border-mitosite-beige-dark" />
+                  
+                  {/* Top Right Square */}
+                  <div className="bg-mitosite-beige w-full h-full transform origin-bottom-left animate-square-to-circle-2 border border-mitosite-beige-dark" />
+                  
+                  {/* Bottom Left Square */}
+                  <div className="bg-mitosite-beige w-full h-full transform origin-top-right animate-square-to-circle-3 border border-mitosite-beige-dark" />
+                  
+                  {/* Bottom Right Square */}
+                  <div className="bg-mitosite-beige w-full h-full transform origin-top-left animate-square-to-circle-4 border border-mitosite-beige-dark" />
+                </div>
+              </div>
+            </div>
           </motion.div>
           {/* SEO and Blog Section */}
-          <motion.div 
-          initial={{width: 0}}
-          animate={{width: "100%"}}
-          transition={{ duration: 1.5}}
-          className="p-4 border-b border-mitosite-beige-dark overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 1.5 }}
+            className="p-4 border-b border-mitosite-beige-dark overflow-hidden h-full"
+          >
             <div className="relative w-full overflow-hidden">
-              <motion.div 
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              transition={{delay: 0.3}}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
                 ref={scrollRef}
                 className="flex whitespace-nowrap"
                 style={{ x: scrollX }}
@@ -213,53 +260,61 @@ const Splash: React.FC = () => {
               </motion.div>
             </div>
           </motion.div>
-          <div className="grid grid-cols-3 gap-2 h-40">
-            <div className="border-r border-dashed border-mitosite-beige-dark">
+          <div className="grid grid-cols-3 gap-2 h-full">
+            <div className="border-r border-dashed border-mitosite-beige-dark h-full flex flex-col justify-center p-4">
               <motion.img
-              initial={{scale: 0}}
-              animate={{scale: 1}}
-              transition={{delay: 0.3}}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.3 }}
                 src={cell1}
                 alt="Cell 1"
-                className="w-full  object-contain p-3"
+                className="w-full object-contain "
               />
-              <motion.p 
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              transition={{delay: 0.3}}
-              className="text-mitosite-beige-dark text-sm text-center">Analyze </motion.p>
-              
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-mitosite-beige-dark text-sm text-center lg:block hidden"
+              >
+                Analyze{" "}
+              </motion.p>
             </div>
-            <div className="border-r border-dashed border-mitosite-beige-dark">
+            <div className="border-r border-dashed border-mitosite-beige-dark h-full flex flex-col justify-center p-4">
               <motion.img
-              initial={{scale: 0}}
-              animate={{scale: 1}}
-              transition={{delay: 0.6}}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.6 }}
                 src={cell2}
                 alt="Cell 2"
-                className="w-full object-contain p-3"
+                className="w-full object-contain"
               />
-              <motion.p 
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              transition={{delay: 0.6}}
-              className="text-mitosite-beige-dark text-sm text-center">Generate </motion.p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="text-mitosite-beige-dark text-sm text-center lg:block hidden"
+              >
+                Generate{" "}
+              </motion.p>
             </div>
 
-            <div className="">
+            <div className="h-full flex flex-col justify-center p-4">
               <motion.img
-              initial={{scale: 0}}
-              animate={{scale: 1}}
-              transition={{delay: 0.9}}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.9 }}
                 src={cell3}
                 alt="Cell 3"
-                className="w-full object-contain p-3"
+                className="w-full  object-contain "
               />
-              <motion.p 
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              transition={{delay: 0.9}}
-              className="text-mitosite-beige-dark text-sm text-center">Evolve </motion.p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.9 }}
+                className="text-mitosite-beige-dark text-sm text-center lg:block hidden"
+              >
+                Evolve{" "}
+              </motion.p>
             </div>
           </div>
           {/* Footer */}
@@ -270,32 +325,32 @@ const Splash: React.FC = () => {
               preserveAspectRatio="none"
             >
               <motion.path
-                initial={{pathLength: 0}}
+                initial={{ pathLength: 0 }}
                 d="M0,10 Q5,0 10,10 Q15,20 20,10 Q25,0 30,10 Q35,20 40,10 Q45,0 50,10 Q55,20 60,10 Q65,0 70,10 Q75,20 80,10 Q85,0 90,10 Q95,20 100,10"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="0.75"
                 className="text-mitosite-beige-dark"
                 animate={{ pathLength: 1 }}
-                transition={{ 
-                  pathLength: { duration: 1.5, ease: "easeOut" }
+                transition={{
+                  pathLength: { duration: 1.5, ease: "easeOut" },
                 }}
                 onAnimationComplete={() => {
                   // This is a placeholder for animation sequencing
                   // The actual wave animation is handled by the second path
                 }}
               />
-              
+
               {/* Second path for the wave animation that starts after the first animation */}
               <motion.path
                 initial={{ opacity: 0 }}
-                animate={{ 
+                animate={{
                   opacity: 1,
                   d: [
                     "M0,10 Q5,0 10,10 Q15,20 20,10 Q25,0 30,10 Q35,20 40,10 Q45,0 50,10 Q55,20 60,10 Q65,0 70,10 Q75,20 80,10 Q85,0 90,10 Q95,20 100,10",
                     "M0,10 Q5,20 10,10 Q15,0 20,10 Q25,20 30,10 Q35,0 40,10 Q45,20 50,10 Q55,0 60,10 Q65,20 70,10 Q75,0 80,10 Q85,20 90,10 Q95,0 100,10",
-                    "M0,10 Q5,0 10,10 Q15,20 20,10 Q25,0 30,10 Q35,20 40,10 Q45,0 50,10 Q55,20 60,10 Q65,0 70,10 Q75,20 80,10 Q85,0 90,10 Q95,20 100,10"
-                  ]
+                    "M0,10 Q5,0 10,10 Q15,20 20,10 Q25,0 30,10 Q35,20 40,10 Q45,0 50,10 Q55,20 60,10 Q65,0 70,10 Q75,20 80,10 Q85,0 90,10 Q95,20 100,10",
+                  ],
                 }}
                 transition={{
                   opacity: { delay: 1.5, duration: 0.3 },
@@ -303,8 +358,8 @@ const Splash: React.FC = () => {
                     delay: 1.5,
                     duration: 2,
                     repeat: Infinity,
-                    ease: "easeInOut"
-                  }
+                    ease: "easeInOut",
+                  },
                 }}
                 d="M0,10 Q5,0 10,10 Q15,20 20,10 Q25,0 30,10 Q35,20 40,10 Q45,0 50,10 Q55,20 60,10 Q65,0 70,10 Q75,20 80,10 Q85,0 90,10 Q95,20 100,10"
                 fill="none"

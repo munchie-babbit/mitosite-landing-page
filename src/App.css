@@ -5,14 +5,15 @@
 /* Ensure smooth scrolling behavior */
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 /* For browsers that support it, use better scroll behavior */
 @supports (scroll-snap-type: y mandatory) {
   .snap-container {
     scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    height: 100vh;
+    overflow-y: auto;
+    height: calc(100vh - 113px);
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch; /* For iOS inertia scrolling */
   }
@@ -28,6 +29,40 @@ body, html {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+body {
+  position: relative;
+}
+
+/* Custom scrollbar styling */
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 16px;
+  border-left: 1px solid #51422B;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #F9F0DD; /* Mitosite beige */
+  border-left: 1px solid #51422B; /* Dark beige border on the left */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #51422B; /* Mitosite dark beige */
+  border-radius: 5px;
+  border: 2px solid #F9F0DD; /* Creates padding effect */
+  border-left: 1px solid #51422B; /* Dark beige border on the left */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3A2E1F; /* Darker on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: 16px;
+  scrollbar-color: #51422B #F9F0DD; /* thumb and track */
 }
 
 /* Remove animation styles as we don't need them */

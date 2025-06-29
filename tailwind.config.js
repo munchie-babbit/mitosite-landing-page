@@ -14,6 +14,7 @@ module.exports = {
         'mitosite-green': '#6A8C75',
         'mitosite-red': '#CE695D',
         'mitosite-mustard': '#BFAD5B',
+        'mitosite-purple': '#9B9DBC',
       },
       fontFamily: {
         'cardo': ['Cardo', 'serif'],
@@ -27,11 +28,92 @@ module.exports = {
         'scroll': {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        'scroll-icons': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        'square-to-circle-1': {
+          '0%, 100%': { 
+            borderRadius: '0', 
+            transform: 'scale(1) translate(0, 0)',
+          },
+          '25%': { 
+            borderRadius: '0 0 0 0', 
+            transform: 'scale(1.1) translate(0, 0)',
+          },
+          '50%': { 
+            borderRadius: '50% 0 0 0', 
+            transform: 'scale(0.9) translate(10%, 10%)',
+          },
+          '75%': { 
+            borderRadius: '100% 0 0 0', 
+            transform: 'scale(0.8) translate(10%, 10%)',
+          }
+        },
+        'square-to-circle-2': {
+          '0%, 100%': { 
+            borderRadius: '0', 
+            transform: 'scale(1) translate(0, 0)',
+          },
+          '25%': { 
+            borderRadius: '0 0 0 0', 
+            transform: 'scale(1.1) translate(0, 0)',
+          },
+          '50%': { 
+            borderRadius: '0 50% 0 0', 
+            transform: 'scale(0.9) translate(-10%, 10%)',
+          },
+          '75%': { 
+            borderRadius: '0 100% 0 0', 
+            transform: 'scale(0.8) translate(-10%, 10%)',
+          }
+        },
+        'square-to-circle-3': {
+          '0%, 100%': { 
+            borderRadius: '0', 
+            transform: 'scale(1) translate(0, 0)',
+          },
+          '25%': { 
+            borderRadius: '0 0 0 0', 
+            transform: 'scale(1.1) translate(0, 0)',
+          },
+          '50%': { 
+            borderRadius: '0 0 0 50%', 
+            transform: 'scale(0.9) translate(10%, -10%)',
+          },
+          '75%': { 
+            borderRadius: '0 0 0 100%', 
+            transform: 'scale(0.8) translate(10%, -10%)',
+          }
+        },
+        'square-to-circle-4': {
+          '0%, 100%': { 
+            borderRadius: '0', 
+            transform: 'scale(1) translate(0, 0)',
+          },
+          '25%': { 
+            borderRadius: '0 0 0 0', 
+            transform: 'scale(1.1) translate(0, 0)',
+          },
+          '50%': { 
+            borderRadius: '0 0 50% 0', 
+            transform: 'scale(0.9) translate(-10%, -10%)',
+          },
+          '75%': { 
+            borderRadius: '0 0 100% 0', 
+            transform: 'scale(0.8) translate(-10%, -10%)',
+          }
         }
       },
       animation: {
         'fade-in-up': 'fade-in-up 1s cubic-bezier(0.4, 0, 0.2, 1) forwards',
         'scroll': 'scroll 8s linear infinite',
+        'scroll-icons': 'scroll-icons 30s linear infinite',
+        'square-to-circle-1': 'square-to-circle-1 6s ease-in-out infinite',
+        'square-to-circle-2': 'square-to-circle-2 6s ease-in-out infinite',
+        'square-to-circle-3': 'square-to-circle-3 6s ease-in-out infinite',
+        'square-to-circle-4': 'square-to-circle-4 6s ease-in-out infinite',
       },
     },
   },

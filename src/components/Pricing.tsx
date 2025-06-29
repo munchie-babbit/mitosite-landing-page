@@ -84,26 +84,20 @@ const Pricing: React.FC = () => {
       subtitle: "AI code & asset generation + human design",
       price: "$99",
       features: [
-        "Up to 5 landing pages",
+        "Everything in Basic",
         "Advanced AI design generation",
         "Weekly content updates",
-        "SEO optimization",
-        "A/B testing",
-        "Analytics dashboard",
         "Priority email support",
       ],
       popular: true,
     },
     {
-      name: "Enterprise",
-      subtitle: "Custom solutions by AI + human designers",
-      price: "$499",
+      name: "Bespoke",
+      subtitle: "Hand-crafted design and development",
+      price: "$199",
       features: [
+        "Everything in Pro",
         "Dedicated human design partner",
-        "Unlimited landing pages",
-        "Premium AI design generation",
-        "Daily content updates",
-        "Advanced SEO tools",
         "Conversion optimization",
         "Custom integrations",
         "Dedicated success manager",
@@ -115,7 +109,7 @@ const Pricing: React.FC = () => {
   return (
     <section id="pricing" className="py-16 bg-mitosite-beige">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-4">
           <h2 className="text-4xl font-bold text-mitosite-beige-dark border border-mitosite-beige-dark p-4">
            
               ✳
