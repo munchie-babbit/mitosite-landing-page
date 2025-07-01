@@ -24,6 +24,13 @@ const Footer: React.FC = () => {
         { name: 'Partners', href: '#', comingSoon: true }
       ]
     },
+    {
+      title: 'Legal',
+      links: [
+        { name: 'Terms of Service', href: '/terms' },
+        { name: 'Privacy Policy', href: '/privacy' },
+      ]
+    },
   ];
   
   const socialLinks = [

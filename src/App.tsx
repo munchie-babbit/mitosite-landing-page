@@ -1,35 +1,29 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { motion, useScroll, useSpring } from 'framer-motion';
 import Nav from './components/Nav';
 import Splash from './components/Splash';
-// import Overview from './components/Overview';
 import GenerateAndMigrate from './components/GenerateAndMigrate';
-import CaseStudies from './components/CaseStudies';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import Companies from './components/Companies';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
 
-
-
-function App() {
+function HomePage() {
   const containerRef = useRef(null);
 
   // Regular sections
   const regularSections = [
     { id: 'splash', Component: Splash },
-    // { id: 'overview', Component: Overview },
     { id: 'generate-migrate', Component: GenerateAndMigrate },
-    // { id: 'case-studies', Component: CaseStudies },
     { id: 'pricing', Component: Pricing },
     { id: 'faq', Component: FAQ },
     { id: 'footer', Component: Footer }
   ];
 
-
   return (
-    <div className="App relative bg-mitosite-beige h-screen overflow-hidden ">
+    <div className="App relative bg-mitosite-beige h-screen overflow-hidden">
       {/* Fixed navigation that stays on top */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <Nav />
@@ -42,9 +36,8 @@ function App() {
         style={{ overflowX: 'hidden' }}
       >
         <div className="border-r border-mitosite-beige-dark">
-        {/* Remaining regular sections */}
-        {regularSections.map(({ id, Component }, index) => {
-          return (
+          {/* Remaining regular sections */}
+          {regularSections.map(({ id, Component }) => (
             <div 
               key={id}
               id={id}
@@ -52,11 +45,22 @@ function App() {
             >
               <Component />
             </div>
-          );
-        })}
-      </div>
+          ))}
+        </div>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
+      </Routes>
+    </Router>
   );
 }
 
