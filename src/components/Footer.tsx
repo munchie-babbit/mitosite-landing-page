@@ -133,8 +133,8 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-mitosite-beige-dark text-mitosite-beige h-[calc(100vh-113px)]">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
-          <div className="col-span-4">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-8">
+          <div className="col-span-2">
             <div className="flex flex-row items-center gap-3">
               <img src={logo} alt="Mitosite AI" className="w-8 h-8 mb-6" />
               <a href="/" className="text-2xl font-bold font-cardo text-mitosite-beige mb-6 inline-block">

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Nav from './components/Nav';
 import Splash from './components/Splash';
+import Features from './components/Features';
 import GenerateAndMigrate from './components/GenerateAndMigrate';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
@@ -16,6 +17,7 @@ function HomePage() {
   // Regular sections
   const regularSections = [
     { id: 'splash', Component: Splash },
+    { id: 'features', Component: Features },
     { id: 'generate-migrate', Component: GenerateAndMigrate },
     { id: 'pricing', Component: Pricing },
     { id: 'faq', Component: FAQ },
@@ -32,7 +34,7 @@ function HomePage() {
       {/* Scroll snapping container */}
       <div 
         ref={containerRef}
-        className="h-[calc(100vh-113px)] overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth snap-container mt-[113px]"
+        className="h-[calc(100vh-113px)] overflow-y-auto lg:snap-y lg:snap-mandatory scroll-smooth snap-container mt-[113px]"
         style={{ overflowX: 'hidden' }}
       >
         <div className="border-r border-mitosite-beige-dark">
@@ -41,7 +43,7 @@ function HomePage() {
             <div 
               key={id}
               id={id}
-              className={'md:h-[calc(100vh-113px)] md:snap-start md:snap-always md:snap-section'}
+              className={'lg:h-[calc(100vh-113px)] lg:snap-start lg:snap-always lg:snap-section'}
             >
               <Component />
             </div>

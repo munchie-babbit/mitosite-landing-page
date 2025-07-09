@@ -31,7 +31,7 @@ const Companies: React.FC = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="font-cardo text-mitosite-beige text-xl p-6 md:pl-6 md:pr-4"
+        className="font-cardo text-center text-mitosite-beige text-xl p-6 md:pl-6 md:pr-4 justify-center"
       >
         Trusted by startups to generate and maintain their websites.
       </motion.div>

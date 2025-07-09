@@ -46,11 +46,11 @@ const Nav: React.FC = () => {
             Sign in
           </a> */}
           <a
-            href="https://app.mitosite.ai"
+            href="https://cal.com/estelle-anhjx1/30min"
             target="_blank"
             className="bg-mitosite-beige-dark text-mitosite-beige hover:bg-opacity-90 px-8 py-6 font-medium transition-colors text-nowrap"
           >
-            Sign up
+            Book a Call with Estelle
           </a>
         </div>
       </div>

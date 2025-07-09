@@ -76,29 +76,29 @@ const Splash: React.FC = () => {
 
   return (
     <div className="grid grid-cols-2 relative  bg-mitosite-beige border-b border-mitosite-beige-dark">
-      <div className="container m-auto col-span-1 ">
-        <div className="max-w-4xl px-6">
+      <div className="container m-auto col-span-1 flex justify-center">
+        <div className="p-6 ">
           <h1 className="font-cardo text-2xl md:text-6xl font-bold text-mitosite-beige-dark mb-6 leading-snug md:leading-snug">
             <span
-              className={`block transition-all duration-700 ${
+              className={`block transition-all duration-700${
                 showFirst ? "animate-fade-in-up" : "opacity-0"
               }`}
             >
-              Self-evolving
+              Build and optimize
             </span>
             <span
               className={`block transition-all duration-700 ${
                 showSecond ? "animate-fade-in-up" : "opacity-0"
               }`}
             >
-              landing pages for
+              your landing page
             </span>
             <span
               className={`block transition-all duration-700 ${
                 showThird ? "animate-fade-in-up" : "opacity-0"
               }`}
             >
-              ever growing startups
+              on autopilot
             </span>
           </h1>
           <div
@@ -106,19 +106,18 @@ const Splash: React.FC = () => {
               showFourth ? "animate-fade-in-up" : "opacity-0"
             }`}
           >
-            <p className="font-josefin text-mitosite-beige-dark text-lg md:text-xl max-w-3xl mb-8">
-              Join the startups building stunning, self-updating websites with
-              Mitosite AI — from first launch to feature updates, SEO, and
-              beyond.
+            <p className="font-josefin text-mitosite-beige-dark text-lg md:text-xl max-w-lg mb-8">
+              Join the SAAS startups launching high converting, self-evolving websites with
+              Mitosite AI
             </p>
 
             <div className="flex flex-col sm:flex-row items-center">
               <a
-                href="https://app.mitosite.ai"
+                href="https://cal.com/estelle-anhjx1/30min"
                 target="_blank"
-                className="px-6 py-3 bg-gradient-to-r from-mitosite-purple/60 to-[#B9BFB1]/60 hover:bg-mitosite-beige-darkest text-mitosite-beige-dark font-medium transition-colors border border-mitosite-beige-dark"
+                className="px-6 py-3 bg-gradient-to-r from-mitosite-purple/60 to-[#B9BFB1]/60 hover:bg-mitosite-beige-darkest text-mitosite-beige-dark font-bold transition-colors border border-mitosite-beige-dark"
               >
-                 Try it now - it's free →
+                 Get started - Contact sales →
               </a>
             </div>
           </div>
