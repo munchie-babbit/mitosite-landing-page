@@ -10,6 +10,7 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
+import { MOBILE_NAV_HEIGHT, DESKTOP_NAV_HEIGHT } from "./constants"
 
 function HomePage() {
   const containerRef = useRef(null);
@@ -34,7 +35,7 @@ function HomePage() {
       {/* Scroll snapping container */}
       <div 
         ref={containerRef}
-        className="h-[calc(100vh-113px)] overflow-y-auto lg:snap-y lg:snap-mandatory scroll-smooth snap-container mt-[113px]"
+        className={`h-[calc(100vh-${MOBILE_NAV_HEIGHT}px)] md:h-[calc(100vh-${DESKTOP_NAV_HEIGHT}px)] overflow-y-auto lg:snap-y lg:snap-mandatory scroll-smooth snap-container mt-[113px]`}
         style={{ overflowX: 'hidden' }}
       >
         <div className="border-r border-mitosite-beige-dark">
@@ -43,7 +44,7 @@ function HomePage() {
             <div 
               key={id}
               id={id}
-              className={'lg:h-[calc(100vh-113px)] lg:snap-start lg:snap-always lg:snap-section'}
+              className={`h-[calc(100vh-${MOBILE_NAV_HEIGHT}px)] md:h-[calc(100vh-${DESKTOP_NAV_HEIGHT}px)] lg:snap-start lg:snap-always lg:snap-section`}
             >
               <Component />
             </div>

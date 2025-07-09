@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import navIcons from "../images/nav-icons.svg";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import logo from "../images/logo.svg";
+import { Menu, X } from "lucide-react";
 
 const Nav: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
-    <nav className=" flex flex-col bg-mitosite-beige-mid border-b border-mitosite-beige-dark">
+    <nav className="flex flex-col bg-mitosite-beige-mid border-b border-mitosite-beige-dark">
       <div className="flex justify-between items-center border-b border-mitosite-beige-dark">
         <div className="flex items-center py-4 px-6">
           <a
@@ -38,26 +43,103 @@ const Nav: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-4">
-          {/* <a
-            href="/sign-in"
-            className="text-mitosite-black hover:opacity-80 transition-opacity text-nowrap font-medium"
+        <div className="flex items-center">
+          {/* Mobile menu button */}
+          <button 
+            onClick={toggleMenu} 
+            className="md:hidden mr-4 text-mitosite-beige-dark focus:outline-none"
           >
-            Sign in
-          </a> */}
+            <Menu size={24} />
+          </button>
+
+          {/* Call to action button */}
           <a
             href="https://cal.com/estelle-anhjx1/30min"
             target="_blank"
-            className="bg-mitosite-beige-dark text-mitosite-beige hover:bg-opacity-90 px-8 py-6 font-medium transition-colors text-nowrap"
+            className="bg-mitosite-beige-dark text-mitosite-beige hover:bg-opacity-90 px-4 sm:px-8 py-4 sm:py-6 font-medium transition-colors text-nowrap hidden md:inline-block"
           >
             Book a Call with Estelle
           </a>
         </div>
       </div>
-      <div className="px-2 h-10 overflow-hidden relative">
-        <div className="flex w-full h-full">
+      
+      {/* Mobile fullscreen menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
           <motion.div 
-            className="flex "
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-mitosite-beige-mid z-50 flex flex-col"
+          >
+            <div className="flex justify-between items-center py-4 px-6 border-b border-mitosite-beige-dark">
+              <a
+                href="/"
+                className="font-cardo text-mitosite-beige-dark font-bold text-2xl text-nowrap flex flex-row items-center"
+              >
+                <img src={logo} alt="Mitosite AI" className="w-8 h-8 mr-3" />
+                Mitosite AI
+              </a>
+              <button 
+                onClick={toggleMenu}
+                className="text-mitosite-beige-dark focus:outline-none"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="flex flex-col items-center justify-center flex-1 space-y-8 text-center">
+              <motion.a
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                href="#getting-started"
+                onClick={toggleMenu}
+                className="text-mitosite-beige-dark text-xl font-medium"
+              >
+                Getting Started
+              </motion.a>
+              <motion.a
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                href="#faq"
+                onClick={toggleMenu}
+                className="text-mitosite-beige-dark text-xl font-medium"
+              >
+                FAQ
+              </motion.a>
+              <motion.a
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                href="#pricing"
+                onClick={toggleMenu}
+                className="text-mitosite-beige-dark text-xl font-medium"
+              >
+                Pricing
+              </motion.a>
+              <motion.a
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                href="https://cal.com/estelle-anhjx1/30min"
+                target="_blank"
+                onClick={toggleMenu}
+                className="mt-4  bg-mitosite-beige-dark text-mitosite-beige hover:bg-opacity-90 px-8 py-4 font-medium transition-colors"
+              >
+                Book a Call with Estelle
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      <div className="px-6 h-10 overflow-hidden relative ">
+        <div className="flex w-full h-full justify-center overflow-hidden">
+          <motion.div 
+            className="flex absolute"
             initial={{opacity: 0}} 
             animate={{opacity: 1}} 
             transition={{duration: 2}}
@@ -70,7 +152,7 @@ const Nav: React.FC = () => {
           </motion.div>
           {/* Duplicate the entire set for seamless looping */}
           <motion.div 
-            className="flex "
+            className="flex absolute"
             initial={{opacity: 0}} 
             animate={{opacity: 1}} 
             transition={{duration: 2}}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from "../images/logo-light.svg";
+import { MOBILE_NAV_HEIGHT, DESKTOP_NAV_HEIGHT } from '../constants';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -131,7 +132,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-mitosite-beige-dark text-mitosite-beige h-[calc(100vh-113px)]">
+    <footer className={`bg-mitosite-beige-dark text-mitosite-beige h-[calc(100vh-${MOBILE_NAV_HEIGHT}px)] md:h-[calc(100vh-${DESKTOP_NAV_HEIGHT}px)]`}>
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-3 md:grid-cols-6 gap-8">
           <div className="col-span-2">

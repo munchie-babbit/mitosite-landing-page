@@ -48,9 +48,9 @@ const Features: React.FC = () => {
           <h2 className="font-cardo text-2xl md:text-4xl font-bold  text-mitosite-beige">Never worry about your landing page again.</h2>
         </div>
 
-        <div className="grid md:grid-cols-2">
+        <div className="grid md:grid-cols-2 gap-4 ">
           {/* Left Side: Features List */}
-          <div className="flex flex-col border border-b-0 border-mitosite-beige-dark mr-6 h-fit">
+          <div className="flex flex-col border border-b-0 border-mitosite-beige-dark mr-6 h-fit w-full">
             {featuresList.map((feature) => (
               <div 
                 key={feature.title}
